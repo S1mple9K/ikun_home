@@ -1,0 +1,56 @@
+server:
+  port: 8881
+
+spring:
+  #  配置数据源
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://ip:port/ikun-net?serverTimezone=GMT%2B8&characterEncoding=utf8&useUnicode=true&useSSL=false
+    username: you_username
+    password: you_password
+  data:
+    mongodb:
+      host: ip
+      port: 27017
+      authentication-database: admin
+      database: ikun_net
+      username: you_username
+      password: you_password
+
+  #  redis配置
+  redis:
+    host: ip
+    port: 6379
+    password: you_password
+    database: 0
+
+  # 邮箱配置
+  mail:
+    host: smtp.xx.com
+    protocol: smtp
+    default-encoding: UTF-8
+    port: 465
+    username: you_email
+    password: you_password
+    properties:
+      mail:
+        smtp:
+          socketFactory.class: java.net.ssl.SSLSocketFactory
+          ssl:
+            enable: true
+          auth: true
+          port: 465
+          starttls:
+            enable: true
+            required: true
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: mapper/*.xml
+
+mybatis-plus:
+  global-config:
+    db-config:
+      #      配置雪花算法
+      id-type: assign_uuid
